@@ -1,7 +1,9 @@
+import Button from './components/Button/Button.jsx';
+
 function App() {
     return (
         <>
-            Hello, world!
+            <Button />
         </>
     )
 }
