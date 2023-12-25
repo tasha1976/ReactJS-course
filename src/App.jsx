@@ -1,7 +1,8 @@
+import './style.scss'
 import Card from './components/Card/Card.jsx';
 
 function App() {
-    const cources = [
+    const courses = [
         {
             id: 1,
             image:
@@ -11,12 +12,12 @@ function App() {
             user: {
                 avatar:
                     'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png',
-                name: 'John Doe'
+                name: 'John Doe',
             },
             rating: 4.5,
             students: 1234,
             modules: 5,
-            duration: 5400
+            duration: 5400,
         },
         {
             id: 2,
@@ -27,22 +28,22 @@ function App() {
             user: {
                 avatar:
                     'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png',
-                name: 'John Doe'
+                name: 'John Doe',
             },
             rating: 4.5,
             students: 1234,
             modules: 5,
             finishedModules: 3,
             duration: 5400,
-            isMyCource: true
+            isMyCource: true,
         }
     ];
 
     return (
-        <>
-            <Card cources={cources} />
-        </>
-    )
+        <div className="card__container">
+            {courses.map(course => <Card key={course.id} data={course} />)}
+        </div>
+    );
 }
 
-export default App
+export default App;
