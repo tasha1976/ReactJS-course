@@ -1,32 +1,15 @@
-import {useState, useEffect} from 'react';
-import Post from './components/Post/Post.jsx';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import UsersList from './components/UsersList';
+import UserDetails from './components/UserDetails';
 
 function App() {
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-                const json = await response.json();
-                setData(json);
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        };
-
-        fetchData();
-    }, []);
-
     return (
-        <div>
-            <h1>Записи</h1>
-            <ul>
-                {data.map(post => (
-                    <Post key={post.id} post={post}/>
-                ))}
-            </ul>
-        </div>
+        <Router>
+            <Routes>
+                <Route path='/' element={<UsersList />} />
+                <Route path='/user/:userId' element={<UserDetails />} />
+            </Routes>
+        </Router>
     );
 }
 
