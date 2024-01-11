@@ -1,16 +1,19 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import UsersList from './components/UsersList';
-import UserDetails from './components/UserDetails';
+import { createContext } from 'react';
+import UserProfile from './components/UserProfile';
 
-function App() {
+export const UserContext = createContext(null);
+
+const App = () => {
+    const user = {
+        name: 'John Doe',
+        email: 'john@example.com',
+    };
+
     return (
-        <Router>
-            <Routes>
-                <Route path='/' element={<UsersList />} />
-                <Route path='/user/:userId' element={<UserDetails />} />
-            </Routes>
-        </Router>
+        <UserContext.Provider value={user}>
+            <UserProfile />
+        </UserContext.Provider>
     );
-}
+};
 
 export default App;
