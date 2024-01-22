@@ -1,18 +1,12 @@
-import { createContext } from 'react';
-import UserProfile from './components/UserProfile';
-
-export const UserContext = createContext(null);
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
+import { Counter } from './components/Counter.jsx';
 
 const App = () => {
-    const user = {
-        name: 'John Doe',
-        email: 'john@example.com',
-    };
-
     return (
-        <UserContext.Provider value={user}>
-            <UserProfile />
-        </UserContext.Provider>
+        <Provider store={store}>
+            <Counter />
+        </Provider>
     );
 };
 
